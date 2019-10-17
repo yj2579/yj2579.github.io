@@ -12,10 +12,11 @@ output:
 ![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
 
 ## Add some links 
-[this](https://www.google.com)
+I am going to use [this](https://www.google.com)
 
 ## Add images 
-![](image.jpg)
+This is a image
+![image](image.jpg)
 
-<img src="images/image.jpg" style="width:75%">
+
 

@@ -1,0 +1,78 @@
+---
+title: "dashboard"
+author: "Yingxi Ji"
+date: "10/27/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# initial setup
+
+```{r}
+library(flexdashboard)
+library(tidyverse)
+library(dplyr)
+library(viridis)
+library(p8105.datasets)
+library(plotly)
+```
+
+# Filter small sample for plot
+
+```{r}
+  subG1 = instacart %>% 
+  select(product_name,order_dow,order_hour_of_day) %>% 
+  filter(product_name %in% c("Pink Lady Apples","Coffee Ice Cream")) %>% 
+  mutate(
+    order_dow = recode(order_dow, `0`="Sun",`1`="Mon",`2`="Tue",`3`="Wed",`4`="Thur",`5`="Fri",`6`="Sat"),
+    order_dow = forcats::fct_relevel(order_dow,c("Mon","Tue","Wed","Thur","Fri","Sat","Sun"))
+  )  %>% 
+  group_by(product_name,order_dow) %>% 
+  summarise(mean_eachday_week = mean(order_hour_of_day))  
+   
+  
+  subG2 = instacart %>% 
+  group_by(product_name) %>% 
+  summarize(n = n()) %>% 
+  filter(n > 5000)
+  
+ 
+ subG3 = instacart %>% 
+  filter(aisle == "packaged cheese") %>% 
+  group_by(product_name) %>% 
+  summarise(n = n()) %>% 
+  head(5) %>% 
+  mutate(product_name = fct_reorder(product_name,n))
+```
+
+# Plot 1 
+## Scatter plot to show the trend of two kinds of products. 
+```{r}
+subG1 %>% 
+  plot_ly(x = ~order_dow, y = ~mean_eachday_week , color = ~product_name, type = "scatter", mode="line") %>% 
+  layout(xaxis = list(title = "weekday "),
+         yaxis = list(title = "mean sale of each weekday"))
+```
+
+# Plot 2 
+## Box plot to show detailed info about order hour
+```{r}
+subG2 %>% 
+  inner_join(instacart, subG2, by = "product_name") %>% 
+ plot_ly(y = ~order_hour_of_day, color = ~product_name, type = "box") %>% 
+  layout(xaxis = list(title = "product name"),
+         yaxis = list(title = "order hour of a day"))
+```
+
+# Plot 3 
+## Bar plot to show the difference of count for each kind of cheese. 
+```{r}
+subG3 %>% 
+  plot_ly(x = ~product_name, y = ~n , color = ~product_name, type = "bar") %>%
+    layout(xaxis = list(title = "packaged cheese"),
+         yaxis = list(title = "count"))
+```
+

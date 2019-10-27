@@ -1,29 +1,22 @@
 ---
 title: "Dashboard"
-author: "Yingxi Ji"
-date: "10/27/2019"
-output: html_document
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
+library(flexdashboard)
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-# initial setup
-
-```{r}
 library(flexdashboard)
 library(tidyverse)
 library(dplyr)
 library(viridis)
 library(p8105.datasets)
 library(plotly)
-```
 
-# Filter small sample for plot
-
-```{r}
-  subG1 = instacart %>% 
+subG1 = instacart %>% 
   select(product_name,order_dow,order_hour_of_day) %>% 
   filter(product_name %in% c("Pink Lady Apples","Coffee Ice Cream")) %>% 
   mutate(
@@ -48,18 +41,26 @@ library(plotly)
   mutate(product_name = fct_reorder(product_name,n))
 ```
 
-# Plot 1 
-## Scatter plot to show the trend of two kinds of products. 
-```{r}
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+### Scatter plot to show the trend of two kinds of products.
+
+```{r, echo= FALSE, message = FALSE, warning = FALSE}
 subG1 %>% 
   plot_ly(x = ~order_dow, y = ~mean_eachday_week , color = ~product_name, type = "scatter", mode="line") %>% 
   layout(xaxis = list(title = "weekday "),
          yaxis = list(title = "mean sale of each weekday"))
 ```
 
-# Plot 2 
-## Box plot to show detailed info about order hour
-```{r}
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+### Box plot to show detailed info about order hour
+
+```{r, echo= FALSE, message = FALSE, warning = FALSE}
 subG2 %>% 
   inner_join(instacart, subG2, by = "product_name") %>% 
  plot_ly(y = ~order_hour_of_day, color = ~product_name, type = "box") %>% 
@@ -67,9 +68,10 @@ subG2 %>%
          yaxis = list(title = "order hour of a day"))
 ```
 
-# Plot 3 
-## Bar plot to show the difference of count for each kind of cheese. 
-```{r}
+### Chart C
+### Bar plot to show the difference of count for each kind of cheese. 
+
+```{r, echo= FALSE, message = FALSE, warning = FALSE}
 subG3 %>% 
   plot_ly(x = ~product_name, y = ~n , color = ~product_name, type = "bar") %>%
     layout(xaxis = list(title = "packaged cheese"),

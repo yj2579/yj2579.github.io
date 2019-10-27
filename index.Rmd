@@ -1,13 +1,16 @@
 ---
-title: "My awesome website"
+title: "My great website"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
+    font: SourceSansProLight
+    theme: darkly
 ---
 
-Welcome to my website. Here I will tell a bit about myself as well as demonstrate some of the skills I have developed.
+Welcome to my website. 
+
+Here I will tell a bit about myself as well as demonstrate some of the skills I have developed.
 
 Hope everyone can be as happy as Elmo
 

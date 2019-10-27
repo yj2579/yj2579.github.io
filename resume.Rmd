@@ -1,0 +1,12 @@
+---
+title: "resume"
+author: "Yingxi Ji"
+date: "10/27/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<iframe src="yj2579_Resume.pdf" width="100%" height="1000px">

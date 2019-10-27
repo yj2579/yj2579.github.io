@@ -7,16 +7,20 @@ output:
     theme: cerulean
 ---
 
-# This is Jeff's awesome website
+Welcome to my website. Here I will tell a bit about myself as well as demonstrate some of the skills I have developed.
 
 ![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
 
-## Add some links 
-I am going to use [this](https://www.google.com)
+## Some links 
 
-## Add images 
-This is a image
-![image](image.jpg)
+I am going to use [this](https://www.google.com) for must of my data science study
+
+When I in my spare time , I often go to [this](https://www.youtube.com)
 
 
+## My resume
+My resume can be reached [here](resume.html).
+
+## Some plots using plotly
+Some demonstration of plots I have done can be reached [here](dashboard.html).
 

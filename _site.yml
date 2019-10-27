@@ -5,10 +5,16 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Dashboard"
+      href: dashboard4.html
     - icon: fa-envelope fa-lg
-      href: mailto:jyingxi0110@gmail.com
+      href: mailto:<yj2579@cumc.columbia.edu>
+    - icon: fa-camera-retro
+      href: https://www.linkedin.com/in/yingxi-ji-362663195/
     - icon: fa-github fa-lg
-      href: http://github.com/yj2579/
+      href: https://github.com/yj2579
 output:
   html_document:
     theme: cerulean
+    
+    

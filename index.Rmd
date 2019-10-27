@@ -27,5 +27,5 @@ When I in my spare time , I often go to [this](https://www.youtube.com)
 My resume can be reached [here](resume.html).
 
 ## Some plots using plotly
-Some demonstration of plots I have done can be reached [here](Dashboard.html).
+Some demonstration of plots I have done can be reached [here](dashboard.html).
 

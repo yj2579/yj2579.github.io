@@ -1,5 +1,5 @@
 ---
-title: "Dashboard"
+title: "dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -7,7 +7,6 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(flexdashboard)
 knitr::opts_chunk$set(echo = TRUE)
 library(flexdashboard)
 library(tidyverse)
@@ -76,5 +75,9 @@ subG3 %>%
   plot_ly(x = ~product_name, y = ~n , color = ~product_name, type = "bar") %>%
     layout(xaxis = list(title = "packaged cheese"),
          yaxis = list(title = "count"))
+```
+
+```{r}
+rmarkdown::render("Dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")
 ```
 

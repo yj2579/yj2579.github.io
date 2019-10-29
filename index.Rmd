@@ -26,7 +26,7 @@ When I in my spare time , I often go to [this](https://www.youtube.com)
 personal info can be reached [here](About.html)
 
 ## My resume
-My resume can be reached [here](resume.html).
+My resume can be reached [here](resume.html)
 
 
 ## Some plots using plotly
